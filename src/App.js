@@ -56,14 +56,25 @@ class App extends Component {
 
 //custom method that will make a request to our baseUrl using fetch and return a promise
   loadData(url) {
+    let allKittens = []
     fetch(url)
       .then(response => {
         return response.json();
       }).then(json => {
-          // this.state.kittens.push(json);
-          this.setState({
-          kittens: json,
-        });
+        //for each json object returned...
+        json.forEach((item, index, array) => {
+        //push item to array only if item does not already exist in allKittens array
+          if(!allKittens.find((kitten) => {
+            return kitten.Number === item.Number
+          })) {
+          //push item to allKittens array so that state can be updated
+           allKittens.push(item);
+         }
+         //need to update state to render kittens
+         this.setState({
+           kittens: allKittens
+         })
+        })
       }).catch(error => {
         console.log(error);
       });
@@ -78,6 +89,7 @@ class App extends Component {
    } else if(page === 3) {
       this.loadData(`${this.props.baseUrl}/4/7`);
       this.loadData(`${this.props.baseUrl}/4/8`);
+      this.loadData(`${this.props.baseUrl}/4/6`);
     } else if(page === 5) {
       this.loadData(`${this.props.baseUrl}/7/6`);
       this.loadData(`${this.props.baseUrl}/7/7`);
