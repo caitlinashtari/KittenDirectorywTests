@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import 'whatwg-fetch';
+import { Navbar, NavItem } from 'react-materialize';
 import { Col } from 'react-materialize';
 
 import KittenList from './components/KittenList';
@@ -26,6 +27,10 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+        <Navbar brand='Kitten Directory' left>
+          <NavItem href='get-started.html'>Kittens</NavItem>
+          <NavItem href='components.html'>Pages</NavItem>
+        </Navbar>
         <Col s={8} m={10} className="s2 m1">
           <KittenList listOfKittens={this.state.kittens} />
         </Col>

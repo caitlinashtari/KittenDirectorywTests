@@ -16,6 +16,7 @@ const KittenList = ({listOfKittens}) => {
   });
 
   return (
+    //return container for CollectionItems
     <Collection>
       {kitten}
     </Collection>
