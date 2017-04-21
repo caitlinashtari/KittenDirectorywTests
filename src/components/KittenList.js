@@ -5,12 +5,13 @@ import { Col, Collection, CollectionItem } from 'react-materialize';
 const KittenList = ({listOfKittens}) => {
 
 //Array.map because data down
-  let kitten = listOfKittens.map((returnedKitten) => {
+  let kittens = listOfKittens.map((returnedKitten) => {
     return (
       <Col s={6} m={4} key={returnedKitten.Number}>
         <CollectionItem className="KittenList-item">
           <p>Name: {returnedKitten.Name}</p>
           <p>Location: {returnedKitten.Location}</p>
+          <p>Number: {returnedKitten.Number}</p>
         </CollectionItem>
       </Col>
     )
@@ -19,7 +20,7 @@ const KittenList = ({listOfKittens}) => {
   return (
     //return container for CollectionItems
     <Collection>
-      {kitten}
+      {kittens}
     </Collection>
   )
 

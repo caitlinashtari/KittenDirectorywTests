@@ -60,17 +60,36 @@ class App extends Component {
       .then(response => {
         return response.json();
       }).then(json => {
-        this.setState({
+          // this.state.kittens.push(json);
+          this.setState({
           kittens: json,
         });
       }).catch(error => {
         console.log(error);
-      })
+      });
+      console.log("KITTENS: ", this.state.kittens);
   }
 
+//call loadData on page selection
   handlePaginationSelect(selectedPage) {
     let page = selectedPage;
-    this.loadData(`${this.props.baseUrl}/${page}`)
+    if(page !== 3 && page !== 5 && page !== 6 && page !== 9 && page !== 10) {
+     this.loadData(`${this.props.baseUrl}/${page}`);
+   } else if(page === 3) {
+      this.loadData(`${this.props.baseUrl}/4/7`);
+      this.loadData(`${this.props.baseUrl}/4/8`);
+    } else if(page === 5) {
+      this.loadData(`${this.props.baseUrl}/7/6`);
+      this.loadData(`${this.props.baseUrl}/7/7`);
+      this.loadData(`${this.props.baseUrl}/4/8`);
+    } else if(page === 6) {
+      this.loadData(`${this.props.baseUrl}/8/8`);
+    } else if(page === 9) {
+      this.loadData(`${this.props.baseUrl}/11/8`);
+      this.loadData(`${this.props.baseUrl}/11/9`);
+    } else if(page === 10) {
+      this.loadData(`${this.props.baseUrl}/13/8`);
+    }
   }
 }
 
