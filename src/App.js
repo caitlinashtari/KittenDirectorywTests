@@ -6,6 +6,8 @@ import { Col, Pagination } from 'react-materialize';
 
 import KittenList from './components/KittenList';
 
+const allKittens = []
+
 class App extends Component {
   constructor(props) {
   //get props from index.js, specifically baseUrl
@@ -56,7 +58,6 @@ class App extends Component {
 
 //custom method that will make a request to our baseUrl using fetch and return a promise
   loadData(url) {
-    let allKittens = []
     fetch(url)
       .then(response => {
         return response.json();
@@ -78,18 +79,19 @@ class App extends Component {
       }).catch(error => {
         console.log(error);
       });
-      console.log("KITTENS: ", this.state.kittens);
   }
 
 //call loadData on page selection
   handlePaginationSelect(selectedPage) {
     let page = selectedPage;
+  //if not a restricted page call data by page
     if(page !== 3 && page !== 5 && page !== 6 && page !== 9 && page !== 10) {
      this.loadData(`${this.props.baseUrl}/${page}`);
+  //if restricted page, manually fetch missing items from non-restricted pages
    } else if(page === 3) {
-      this.loadData(`${this.props.baseUrl}/4/7`);
-      this.loadData(`${this.props.baseUrl}/4/8`);
-      this.loadData(`${this.props.baseUrl}/4/6`);
+      this.loadData(`${this.props.baseUrl}/4/6`)
+      this.loadData(`${this.props.baseUrl}/4/7`)
+      this.loadData(`${this.props.baseUrl}/4/8`)
     } else if(page === 5) {
       this.loadData(`${this.props.baseUrl}/7/6`);
       this.loadData(`${this.props.baseUrl}/7/7`);
