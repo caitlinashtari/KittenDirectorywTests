@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import 'whatwg-fetch';
+import { Col } from 'react-materialize';
+
+import KittenList from './components/KittenList';
 
 class App extends Component {
   constructor(props) {
@@ -24,13 +26,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Col s={8} m={10} className="s2 m1">
+          <KittenList listOfKittens={this.state.kittens} />
+        </Col>
       </div>
     );
   }
