@@ -9,7 +9,9 @@ class App extends Component {
     super(props);
 
   //set state
-    this.state = {};
+    this.state = {
+      kittens: []
+    };
 
   //bind custom method loadData to the scope of App class
     this.loadData = this.loadData.bind(this);
@@ -39,7 +41,10 @@ class App extends Component {
       .then(response => {
         return response.json();
       }).then(json => {
-        console.log(json);
+        this.setState({
+          kittens: json
+        });
+        console.log("STATE: ", this.state);
       }).catch(error => {
         console.log(error);
       })
