@@ -4,6 +4,7 @@ import { Col, Collection, CollectionItem } from 'react-materialize';
 //create stateless functional comp to pass in and display our list of kittens array from api
 const KittenList = ({listOfKittens}) => {
 
+//map because data down
   let kitten = listOfKittens.map((returnedKitten) => {
     return (
       <Col s={6} m={4} key={returnedKitten.Number}>
