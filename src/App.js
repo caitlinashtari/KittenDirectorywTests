@@ -68,8 +68,8 @@ class App extends Component {
       })
   }
 
-  handlePaginationSelect(event) {
-    let page = event;
+  handlePaginationSelect(selectedPage) {
+    let page = selectedPage;
     this.loadData(`${this.props.baseUrl}/${page}`)
   }
 }
