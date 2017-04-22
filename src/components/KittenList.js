@@ -7,10 +7,10 @@ const KittenList = ({listOfKittens}) => {
   let kittens = listOfKittens.map((returnedKitten) => {
     return (
       <Col m={6} s={12} key={returnedKitten.Number} className='kitten-col'>
-        <CardPanel className="kitten-card teal accent-2 purple-text">
-          <h3>{returnedKitten.Name}</h3>
-          <h5>Hometown: {returnedKitten.Location}</h5>
-          <p>Age: {returnedKitten.Number}</p>
+        <CardPanel className="kitten-card deep-orange-text">
+          <h2>{returnedKitten.Name}</h2>
+          <h4>Location: {returnedKitten.Location}</h4>
+          <h5>Age: {returnedKitten.Number}</h5>
           <img
             className='responsive-img'
             src={require(`./${Math.floor(Math.random() * 9 + 1) + 1}.jpg`)}

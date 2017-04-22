@@ -2,13 +2,20 @@
   text-align: center;
 }
 
-nav {
-  background-color: white;
-  color: black;
+li.waves-effect.active {
+  background-color: #ff3d00;
 }
 
-a.brand-logo {
-  color: black;
+.header {
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.header h1 {
+  font-family: 'Over the Rainbow', cursive;
+}
+
+.small-header {
+  font-family: 'Raleway', sans-serif;
 }
 
 .kitten-row{
@@ -23,6 +30,18 @@ a.brand-logo {
 
 .kitten-card {
   height: 500px;
+}
+
+.kitten-card h2 {
+  font-family: 'Raleway', sans-serif;
+}
+
+.kitten-card h4 {
+  font-family: 'Open Sans Condensed', sans-serif;
+}
+
+.kitten-card h5 {
+  font-family: 'Over the Rainbow', cursive;
 }
 
 .pagination {

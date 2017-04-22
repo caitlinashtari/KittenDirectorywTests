@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import 'whatwg-fetch';
-import { Navbar, Col, Pagination } from 'react-materialize';
+import { Pagination, Col } from 'react-materialize';
 
 //sub-components
 import KittenList from './components/KittenList';
@@ -56,8 +56,11 @@ class App extends Component {
     return (
       <div className="App">
       {/*eventually separate out to Nav component*/}
-        <Navbar brand='Kitten Pages' left >
-        </Navbar>
+        <div className='header'>
+          <h1>Kitten Pages</h1>
+          <h5 className="small-header">a place to find other</h5>
+          <h3>KITTENS LIKE YOU</h3>
+        </div>
 
       {/*Display KittenList Component*/}
 
