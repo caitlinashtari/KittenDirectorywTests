@@ -7,7 +7,7 @@ const KittenList = ({listOfKittens}) => {
   let kittens = listOfKittens.map((returnedKitten) => {
     return (
       <Col s={6} m={4} key={returnedKitten.Number}>
-        <CollectionItem className="KittenList-item">
+        <CollectionItem>
           <p>Name: {returnedKitten.Name}</p>
           <p>Location: {returnedKitten.Location}</p>
           <p>Number: {returnedKitten.Number}</p>

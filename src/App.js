@@ -6,7 +6,7 @@ import { Col, Pagination } from 'react-materialize';
 
 import KittenList from './components/KittenList';
 
-const allKittens = []
+const allKittens = [];
 
 class App extends Component {
   constructor(props) {
@@ -24,12 +24,16 @@ class App extends Component {
 
   //bind custom method loadData to the scope of App class
     this.loadData = this.loadData.bind(this);
+    this.sortKittens = this.sortKittens.bind(this);
     this.handlePaginationSelect = this.handlePaginationSelect.bind(this);
   }
 
 //call loadData method and pass in baseUrl from props with page set to 1
   componentWillMount() {
     this.loadData(`${this.props.baseUrl}/1`);
+    this.setState({
+      kittens: allKittens
+    });
   }
 
   render() {
@@ -63,22 +67,29 @@ class App extends Component {
         return response.json();
       }).then(json => {
         //for each json object returned...
-        json.forEach((item, index, array) => {
+        json.forEach((item) => {
         //push item to array only if item does not already exist in allKittens array
           if(!allKittens.find((kitten) => {
             return kitten.Number === item.Number
           })) {
           //push item to allKittens array so that state can be updated
            allKittens.push(item);
+           this.sortKittens();
          }
-         //need to update state to render kittens
-         this.setState({
-           kittens: allKittens
-         })
+       });
+       //need to update state to render kittens
+        this.setState({
+          kittens: allKittens
         })
       }).catch(error => {
         console.log(error);
       });
+  }
+
+  sortKittens() {
+    allKittens.sort((a, b) => {
+      return a.Number - b.Number;
+    });
   }
 
 //call loadData on page selection
@@ -89,19 +100,23 @@ class App extends Component {
      this.loadData(`${this.props.baseUrl}/${page}`);
   //if restricted page, manually fetch missing items from non-restricted pages
    } else if(page === 3) {
-      this.loadData(`${this.props.baseUrl}/4/6`)
-      this.loadData(`${this.props.baseUrl}/4/7`)
-      this.loadData(`${this.props.baseUrl}/4/8`)
+      this.loadData(`${this.props.baseUrl}/4/6`);
+      this.loadData(`${this.props.baseUrl}/4/7`);
+      this.loadData(`${this.props.baseUrl}/4/8`);
     } else if(page === 5) {
+      this.loadData(`${this.props.baseUrl}/4/9`);
       this.loadData(`${this.props.baseUrl}/7/6`);
       this.loadData(`${this.props.baseUrl}/7/7`);
       this.loadData(`${this.props.baseUrl}/4/8`);
     } else if(page === 6) {
+      this.loadData(`${this.props.baseUrl}/8/7`);
       this.loadData(`${this.props.baseUrl}/8/8`);
     } else if(page === 9) {
+      this.loadData(`${this.props.baseUrl}/89/1`);
       this.loadData(`${this.props.baseUrl}/11/8`);
       this.loadData(`${this.props.baseUrl}/11/9`);
     } else if(page === 10) {
+      this.loadData(`${this.props.baseUrl}/13/7`);
       this.loadData(`${this.props.baseUrl}/13/8`);
     }
   }
