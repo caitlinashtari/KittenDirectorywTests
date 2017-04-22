@@ -1,26 +1,29 @@
 import React from 'react';
-import { Col, Collection, CollectionItem } from 'react-materialize';
+import { Col, CardPanel, Row } from 'react-materialize';
 
-//create stateless functional comp to pass in and display our list of kittens array from api
+//create stateless functional comp to pass in and display our list of kittens array from app.js
 const KittenList = ({listOfKittens}) => {
-//Array.map because data down
   let kittens = listOfKittens.map((returnedKitten) => {
     return (
-      <Col s={6} m={4} key={returnedKitten.Number}>
-        <CollectionItem>
-          <p>Name: {returnedKitten.Name}</p>
-          <p>Location: {returnedKitten.Location}</p>
-          <p>Number: {returnedKitten.Number}</p>
-        </CollectionItem>
+      <Col m={6} s={12} key={returnedKitten.Number}>
+        <CardPanel className="teal purple-text">
+          <h3>{returnedKitten.Name}</h3>
+          <h5>Hometown: {returnedKitten.Location}</h5>
+          <p>Age: {returnedKitten.Number}</p>
+          <img
+            src={require('./cat.jpg')}
+            alt='space cat'
+            className='responsive-img'/>
+        </CardPanel>
       </Col>
     )
   });
 
   return (
     //return container for CollectionItems
-    <Collection>
+    <Row>
       {kittens}
-    </Collection>
+    </Row>
   )
 
 }

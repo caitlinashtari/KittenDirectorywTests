@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import 'whatwg-fetch';
-import { Navbar, NavItem } from 'react-materialize';
+import { Navbar } from 'react-materialize';
 import { Col, Pagination } from 'react-materialize';
 
 import KittenList from './components/KittenList';
@@ -17,14 +17,13 @@ class App extends Component {
     this.state = {
       kittens: [],
       activePage: 0,
-      page: 0,
+      page: 1,
       limit: 10,
       totalPages: 10
     };
 
   //bind custom method loadData to the scope of App class
     this.loadData = this.loadData.bind(this);
-    this.sortKittens = this.sortKittens.bind(this);
     this.handlePaginationSelect = this.handlePaginationSelect.bind(this);
   }
 
@@ -40,9 +39,7 @@ class App extends Component {
     return (
       <div className="App">
       {/*eventually separate out to Nav component*/}
-        <Navbar brand='Kitten Directory' left>
-          <NavItem href='get-started.html'>Kittens</NavItem>
-          <NavItem href='components.html'>Pages</NavItem>
+        <Navbar brand='Kitten Pages' left >
         </Navbar>
 
       {/*Column to display list of all kittens*/}
@@ -72,24 +69,57 @@ class App extends Component {
           if(!allKittens.find((kitten) => {
             return kitten.Number === item.Number
           })) {
-          //push item to allKittens array so that state can be updated
+          //push item to allKittens array so that state can be updated and after the data is pushed, sort allKittens
            allKittens.push(item);
            this.sortKittens();
          }
        });
-       //need to update state to render kittens
-        this.setState({
-          kittens: allKittens
-        })
+       //update state in order to render kittens
+         this.dataForPage();
+
       }).catch(error => {
         console.log(error);
       });
   }
 
+// sort allKittens array by Number value
   sortKittens() {
     allKittens.sort((a, b) => {
       return a.Number - b.Number;
     });
+  }
+
+  dataForPage() {
+    if(this.state.page === 1) {
+      this.setState({
+        kittens: allKittens.splice(0,10)
+      })
+    } else if(this.state.page === 2) {
+      this.setState({
+        kittens: allKittens.splice(10, 21)
+      })
+    } else if(this.state.page === 3) {
+      this.setState({
+        kittens: allKittens.splice(21, 31)
+      })
+    } else if(this.state.page === 5) {
+      this.setState({
+        kittens: allKittens.splice(31, 40)
+      })
+    } else if(this.state.page === 6) {
+      this.setState({
+        kittens: allKittens.splice(40, 51)
+      })
+    }
+    else if(this.state.page === 9) {
+      this.setState({
+        kittens: allKittens.splice(51, 61)
+      })
+    } else if(this.state.page === 10) {
+      this.setState({
+        kittens: allKittens.splice(61, 71)
+      })
+    }
   }
 
 //call loadData on page selection
