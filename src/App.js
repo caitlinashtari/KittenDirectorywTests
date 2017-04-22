@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 import './App.css';
 import 'whatwg-fetch';
-import { Navbar } from 'react-materialize';
-import { Col, Pagination } from 'react-materialize';
+import { Navbar, Col, Pagination } from 'react-materialize';
 
 //sub-components
 import KittenList from './components/KittenList';
-
 
 //push all data records that are not repeats to allKittens
 const allKittens = [];
@@ -61,13 +59,12 @@ class App extends Component {
         <Navbar brand='Kitten Pages' left >
         </Navbar>
 
-      {/*Column to display list of all kittens*/}
-        <Col s={8} m={10} className="s2 m1">
-          <KittenList listOfKittens={this.state.kittens} />
-        </Col>
+      {/*Display KittenList Component*/}
+
+        <KittenList listOfKittens={this.state.kittens} />
 
       {/*Pagination buttons that change displayed data on select */}
-        <Col s={12}>
+        <Col s={12} className='pagination'>
           <Pagination
             items={this.state.totalPages}
             activePage={this.state.activePage}

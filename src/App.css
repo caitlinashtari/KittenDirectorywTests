@@ -11,6 +11,24 @@ a.brand-logo {
   color: black;
 }
 
+.kitten-row{
+  display: table;
+  width: 100%;
+  padding: 70px;
+}
+
+.kitten-col {
+  display: table-cell;
+}
+
+.kitten-card {
+  height: 500px;
+}
+
+.pagination {
+  padding: 0 40px 40px 40px;
+}
+
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
