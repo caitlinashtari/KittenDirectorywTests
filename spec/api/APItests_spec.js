@@ -20,18 +20,18 @@ frisby.create('Ensure this is a genuine response from API')
   .expectBodyContains('Name')
   .toss()
 
-  frisby.create('Ensure test has name, location, and number')
-    .get('https://50iyt60g2b.execute-api.us-west-2.amazonaws.com/prod/load/1/1')
-    .expectJSON([
-      {
-        'Name': "Chester Soderblom",
-        'Location': "Simmesport",
-        'Number': 1
-      }
-    ])
+frisby.create('Ensure test has name, location, and number')
+  .get('https://50iyt60g2b.execute-api.us-west-2.amazonaws.com/prod/load/1/1')
+  .expectJSON([
+    {
+      'Name': "Chester Soderblom",
+      'Location': "Simmesport",
+      'Number': 1
+    }
+  ])
   .toss()
 
-  frisby.create('Ensure test has name, location, and number')
+frisby.create('Ensure test has name, location, and number')
     .get('https://50iyt60g2b.execute-api.us-west-2.amazonaws.com/prod/load/1/1')
     .expectJSON([
       {
@@ -40,4 +40,9 @@ frisby.create('Ensure this is a genuine response from API')
         'Number': 1
       }
     ])
+    .toss()
+
+frisby.create('Ensure page 3 returns 400 error response')
+  .get('https://50iyt60g2b.execute-api.us-west-2.amazonaws.com/prod/load/3')
+  .expectStatus(400)
   .toss()
