@@ -48,7 +48,19 @@ frisby.create('Ensure page 3 returns 400 error response')
   .toss()
 
 
-  frisby.create('Inspection of the JSON HTTP response')
-    .get('https://50iyt60g2b.execute-api.us-west-2.amazonaws.com/prod/load/1')
-    .inspectJSON()
+frisby.create('Inspection of the JSON HTTP response')
+  .get('https://50iyt60g2b.execute-api.us-west-2.amazonaws.com/prod/load/1')
+  .inspectJSON()
   .toss()
+
+frisby.create('Just a quick inspection of the HTTP headers response')
+  .get('https://50iyt60g2b.execute-api.us-west-2.amazonaws.com/prod/load/1')
+  .inspectHeaders()
+  .toss()
+
+//itterate over all possible pages and numbers of items
+for(var i = 1; i <= 100; i++) {
+frisby.create('Just a quick inspection of the HTTP status code response')
+    .get('https://50iyt60g2b.execute-api.us-west-2.amazonaws.com/prod/load/' + i).inspectStatus()
+    .toss()
+  }
