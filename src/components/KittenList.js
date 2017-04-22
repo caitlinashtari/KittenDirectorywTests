@@ -1,8 +1,9 @@
 import React from 'react';
 import { Col, CardPanel, Row } from 'react-materialize';
 
-//create stateless functional comp to pass in and display our list of kittens array from app.js
+//stateless functional comp to display kittens from app.js
 const KittenList = ({listOfKittens}) => {
+//map kittens array passed in from app.js
   let kittens = listOfKittens.map((returnedKitten) => {
     return (
       <Col m={6} s={12} key={returnedKitten.Number}>
@@ -13,14 +14,14 @@ const KittenList = ({listOfKittens}) => {
           <img
             src={require('./cat.jpg')}
             alt='space cat'
-            className='responsive-img'/>
+          />
         </CardPanel>
       </Col>
     )
   });
 
   return (
-    //return container for CollectionItems
+    //return container for CardPanels
     <Row>
       {kittens}
     </Row>
