@@ -46,3 +46,9 @@ frisby.create('Ensure page 3 returns 400 error response')
   .get('https://50iyt60g2b.execute-api.us-west-2.amazonaws.com/prod/load/3')
   .expectStatus(400)
   .toss()
+
+
+  frisby.create('Inspection of the JSON HTTP response')
+    .get('https://50iyt60g2b.execute-api.us-west-2.amazonaws.com/prod/load/1')
+    .inspectJSON()
+  .toss()
