@@ -95,9 +95,9 @@ class App extends Component {
          };
        });
        //update state to render kittens with data from page 1 default
-          this.setState({
-            kittens: allKittens.slice(0, 10)
-          });
+         this.setState({
+           kittens: allKittens.slice(0, 10)
+         });
       }).catch(error => {
         console.log(error);
       });
